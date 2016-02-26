@@ -196,7 +196,7 @@ void rvm_about_to_modify(trans_t tid, void *segbase, int offset, int size)
     memcpy(undo_record->data,(char*)segbase+offset,size);
     char test[100];
     strcpy(test,(char*)segbase+offset);
-		cout<<"test undo string="<<test<<endl;
+    cout<<"test undo string="<<test<<endl;
     //now see if the undo record exists for that particular segment in the map or not
     cout<<"pointer="<<(char*)segbase+offset<<endl;
     if(undo_log.count(tid)>0)
@@ -249,8 +249,8 @@ void rvm_destroy(rvm_t rvm, const char* segname)
   cout<<"entering destroy function"<<endl;
   if (segments.count(segname)>0)
   {
-	  cout << "The segment is mapped. Cannot delete.";
-	  return;
+    cout << "The segment is mapped. Cannot delete.";
+    return;
   }
   string dir(rvm);
   string fil(segname);
@@ -259,16 +259,16 @@ void rvm_destroy(rvm_t rvm, const char* segname)
   char* command = (char*) malloc(strlen(deleted_name.c_str()) + 4);
   strcpy(command, "rm ");
   strcat(command, deleted_name.c_str());
-	system(command);
-	}
+  system(command);
+}
 
 void rvm_commit_trans(trans_t tid)
 {
-	cout << "\nInside commit transaction" << endl;
+  cout << "\nInside commit transaction" << endl;
   if (redo_log.count(tid)!=0)
-	{
-		vector<redo_t*> redo_recs;
-		redo_recs = redo_log[tid];
+    {
+      vector<redo_t*> redo_recs;
+      redo_recs = redo_log[tid];
 		for (vector<redo_t *>::iterator it = redo_recs.begin();it != redo_recs.end(); ++it)
 		{
 			redo_t *r = new redo_t();
