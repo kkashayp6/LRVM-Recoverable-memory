@@ -385,7 +385,7 @@ void rvm_truncate_log(rvm_t rvm)
 void truncate_segment(rvm_t rvm, const char* segname)
 {
 	//Truncates the segname log file in rvm_t directory
-  cout<<"inside truncate segment function"<<endl;	
+  	cout<<"inside truncate segment function"<<endl;	
 	string dir(rvm);
 	string fil(segname);
 	string separator = "/";
